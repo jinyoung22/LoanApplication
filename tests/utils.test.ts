@@ -4,14 +4,13 @@ import { LoanApplication } from '../database/LoanApplication';
 describe('Loan Application Tests', () => {
   describe('calculateMonthlyPayment', () => {
     it('should calculate the monthly payment correctly', () => {
-      const loanAmount = 10000; // Example loan amount
-      const interestRate = 5; // Example interest rate
-      const loanTerm = 2; // Example loan term in years
+      const loanAmount = 10000;
+      const interestRate = 5;
+      const loanTerm = 2;
 
       const monthlyPayment = calculateMonthlyPayment(loanAmount, interestRate, loanTerm);
-      const expectedPayment = 438.71; // Expected result calculated manually or from a reliable source
-
-      expect(monthlyPayment).toBeCloseTo(expectedPayment, 2); // The second argument is the number of decimal places to check
+      const expectedPayment = 438.71;
+      expect(monthlyPayment).toBeCloseTo(expectedPayment, 2);
     });
   });
 
@@ -19,7 +18,7 @@ describe('Loan Application Tests', () => {
     it('should validate the loan application correctly', () => {
       const validLoanApplication: LoanApplication = {
         id: 5,
-        name: 'John Doe',
+        name: 'Phoebe',
         amount: 25000,
         type: 'personal',
         income: 50000,
@@ -34,7 +33,7 @@ describe('Loan Application Tests', () => {
     it('should return an error message for invalid loan application', () => {
       const invalidLoanApplication: LoanApplication = {
         id:2,
-        name: '', // Missing name
+        name: '',
         amount: 25000,
         type: 'personal',
         income: 50000,
@@ -49,8 +48,6 @@ describe('Loan Application Tests', () => {
       });
     });
   });
-
-  // Add more tests for other functions and edge cases
 });
 
 
@@ -59,7 +56,7 @@ describe('validateLoanApplication', () => {
     const loanApplication: LoanApplication = {
       id:1,
       name: 'Jane Doe',
-      amount: 999, // 너무 낮은 금액
+      amount: 999,
       type: 'personal',
       income: 30000,
       interestRate: 5
@@ -73,11 +70,11 @@ describe('validateLoanApplication', () => {
   it('should fail validation for invalid interest rate', () => {
     const loanApplication: LoanApplication = {
       id: 3,
-      name: 'John Doe',
+      name: 'Phoebe',
       amount: 20000,
       type: 'personal',
       income: 50000,
-      interestRate: 31 // 너무 높은 이자율
+      interestRate: 31 
     };
 
     const validationResult = validateLoanApplication(loanApplication);
